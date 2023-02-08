@@ -51,6 +51,9 @@ get_user_status <- function(x, bearer_token = get_bearer()){
       dat$errors <- dat$errors %>% dplyr::mutate(suspended = ifelse(title == "Forbidden", T, F),
                                                  undetectable = ifelse(title == "Not Found Error", T, F))
       container <- dplyr::left_join(container, dat$errors %>% dplyr::select("resource_id", "suspended", "undetectable"), by = c("author_id" = "resource_id"))
+    } else {
+      container <- container %>% dplyr::mutate(suspended = F,
+                                        undetectable = F)
     }
     
     # if there are observations in the df, change all from boolean to integer for better overview
