@@ -1,12 +1,12 @@
 #' Get user status
 #' 
-#' This function fetches user-level information about the status of the Twitter user account (suspended, deleted, privated) for a vector of user IDs.
-#' It is written to resemble that of "get_user_profile.R" closely.
+#' This function fetches information about the current status of a given user IDs (e.g. 123456789).
 #'
 #' @param x string containing one user id or a vector of user ids
 #' @param bearer_token string, bearer token
 #'
-#' @return a data frame
+#' @return a data frame returning five variables: id, verified, protected, suspended, undetectable. 'undetectable' is returned if a user ID never existed or once existed and is now deleted (not suspended but deleted, often by the user herself).
+#' 
 #' @export
 #'
 #' @examples
